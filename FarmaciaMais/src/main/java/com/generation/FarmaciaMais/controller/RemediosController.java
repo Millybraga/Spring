@@ -37,12 +37,6 @@ public class RemediosController {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build()); //encontrar pelo id/ retornar se deu deu certo ou não.
 	}
 
-	
-	@GetMapping("/tipo/{tipo}")
-	public ResponseEntity<List<Remedios>>getBytipo(@PathVariable String tipo){
-		return ResponseEntity.ok(repository.findAllByTipoContainingIgnoreCase(tipo));
-	}
-	
 
 	
 	@PostMapping

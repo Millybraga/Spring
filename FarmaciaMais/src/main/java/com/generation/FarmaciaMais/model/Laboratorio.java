@@ -31,10 +31,6 @@ public class Laboratorio {
 	@OneToMany(mappedBy = "laboratorio", cascade = CascadeType.ALL) 
 	@JsonIgnoreProperties("laboratorio")
 	private List<Remedios> remedios;
-	
-	
-	
-	//GET AND SET
 
 	public long getId() {
 		return id;
@@ -60,5 +56,7 @@ public class Laboratorio {
 		this.remedios = remedios;
 	}
 	
-	
 }
+	
+
+	

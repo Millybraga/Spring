@@ -13,7 +13,6 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
-
 @Entity
 @Table (name = "remedios")
 public class Remedios {
@@ -34,7 +33,7 @@ public class Remedios {
 	private String tipo;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("laboratorio")
+	@JsonIgnoreProperties("remedios")
 	private Laboratorio laboratorio;
 	
 
