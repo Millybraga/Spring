@@ -1,4 +1,4 @@
-package com.generation.FarmaciaMais.controller;
+package com.generation.minhaLojaDeGames.controller;
 
 import java.util.List;
 
@@ -15,46 +15,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.FarmaciaMais.model.Laboratorio;
-import com.generation.FarmaciaMais.repository.LaboratorioRepository;
+import com.generation.minhaLojaDeGames.model.CategoriaUsuario;
+import com.generation.minhaLojaDeGames.repository.CategoriaRepository;
 
 
 @RestController 
 @CrossOrigin (origins = "*", allowedHeaders = "*")  
-@RequestMapping("/laboratorio")
-public class LaboratorioController {
+@RequestMapping("/categoria")
+public class CategoriaController {
 
+	
 	@Autowired
-	private LaboratorioRepository repository;
+	private CategoriaRepository repository;
 	
 	@GetMapping 
-	public ResponseEntity<List<Laboratorio>> GetAll() {
+	public ResponseEntity<List<CategoriaUsuario>> GetAll() {
 		
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/id/{id}") 
-	public ResponseEntity<Laboratorio> GetById(@PathVariable long id) {
+	public ResponseEntity<CategoriaUsuario> GetById(@PathVariable long id) {
 		
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/condicao/{condicao}") 
-	public ResponseEntity<List<Laboratorio>> GetByCondicao(@PathVariable String condicao) {
+	@GetMapping("/poder/{poder}") 
+	public ResponseEntity<List<CategoriaUsuario>> GetByCondicao(@PathVariable String poder) {
 		
-		return ResponseEntity.ok(repository.findAllByCondicaoContainingIgnoreCase(condicao));
+		return ResponseEntity.ok(repository.findAllByPoderContainingIgnoreCase(poder));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Laboratorio> post (@RequestBody Laboratorio laboratorio) {
+	public ResponseEntity<CategoriaUsuario> post (@RequestBody CategoriaUsuario categoria) {
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(laboratorio));
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(categoria));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Laboratorio> put (@RequestBody Laboratorio laboratorio) {
-		return ResponseEntity.status(HttpStatus.OK).body(repository.save(laboratorio));
+	public ResponseEntity<CategoriaUsuario> put (@RequestBody CategoriaUsuario categoria) {
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(categoria));
 	}
 	
 	@DeleteMapping("/delete/{id}") 
@@ -64,3 +65,5 @@ public class LaboratorioController {
 	
 
 }
+
+
