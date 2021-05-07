@@ -32,6 +32,7 @@ public class Laboratorio {
 	@JsonIgnoreProperties("laboratorio")
 	private List<Remedios> remedios;
 
+	
 	public long getId() {
 		return id;
 	}
